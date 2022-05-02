@@ -73,7 +73,7 @@ int go(IN PCHAR Buffer, IN ULONG Length)
 
     //----------------------------------------Wait for EventViewer to run, then delete payload,  cleanup--------------------------------------------
     Sleep(2000);
-    //DeleteFileA(Path);
+    DeleteFileA(Path);
     free(final);
     free(cmd);
     return 0;
