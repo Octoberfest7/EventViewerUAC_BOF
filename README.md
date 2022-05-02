@@ -97,6 +97,10 @@ The finalized payload is then written to disk and mmc.exe called in order to exe
 x86_64-w64-mingw32-gcc -o EventViewerUAC.x64.o -Os -c main.c -DBOF
 ```
 
+## Further Work
+
+Ysoserial offers a --rawcmd option where you can invoke a different executable than cmd.exe, however you cannot provide any arguments to it.  This opens the door to being able to directly invoke your payload without calling cmd.exe and thus not leaving the console window open; however there would be nothing to close mmc.exe in this case.  One could write their payloads to determine the parent process of the payload and if it is mmc.exe, kill mmc.exe in order to clean up after this UAC bypass.  This is very possible, however I didn't go to the trouble to do so as this is one of many UAC bypasses out there, and not everyone is creating their own custom payloads like that.  I may incorporate into my personal runners.
+
 ## Credits
 
 1. [@orange_8361](https://twitter.com/orange_8361) 
