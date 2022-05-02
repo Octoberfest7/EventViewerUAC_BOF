@@ -57,7 +57,7 @@ Copying this to notepad and searching for '\&amp;' in hex locates the desired by
 
 ![image](https://user-images.githubusercontent.com/91164728/166181384-749bc996-42c1-4aba-ad7f-a68bb33d3ea3.png)
 
-These bytes are then removed and the payload split into two parts at this location:
+The payload is split into two parts immediately after these bytes:
 
 ![image](https://user-images.githubusercontent.com/91164728/166178513-da866fc4-88bf-4f9d-b1ca-3d3402c2c99f.png)
 
