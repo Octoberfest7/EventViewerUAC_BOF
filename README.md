@@ -91,6 +91,12 @@ Once these bytes are set, they are copied into the Before buffer at the proper p
 
 The finalized payload is then written to disk and mmc.exe called in order to execute it.  Afterwards the payload is cleaned up.
   
+## To Compile:
+
+```
+x86_64-w64-mingw32-gcc -o EventViewerUAC.x64.o -Os -c main.c -DBOF
+```
+
 ## Credits
 
 1. [@orange_8361](https://twitter.com/orange_8361) 
